@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="low">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+<h2>Editing Book</h2>
+
+ <% if @book.errors.any? %>
+  <%= @book.errors.count %>errors prohibited this book from being saved:<br>
+   <% @book.errors.full_messages.each do |msg| %>
+    <%= msg %><br>
+   <% end %>
+  <% end %>
+
+<%= form_with model: @book,  local:true do |f| %>
+<div class="form-group">
+<h4>Title</h4>
+<%= f.text_field :title %>
+</div>
+
+<div class="form-group">
+<h4>Opinion</h4>
+<%= f.text_area :body %>
+</div>
+
+<div class="form-group">
+<br><%= f.submit 'Update Book' ,class: "btn-success" %></br>
+<% end %>
+</div>
+
+<%= link_to "Show", book_path(@book) %>
+<a>|</a>
+<%= link_to "Back", books_path %>
